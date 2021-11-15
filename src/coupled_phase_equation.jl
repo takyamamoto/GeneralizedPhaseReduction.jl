@@ -102,7 +102,7 @@ function compute_IsΘ(G, N, D, XsI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5)
 end
 
 function conventinal_coupled_updateΘ(Θ, p, t)
-    N, κ, G, ωI, ζθI, XsI = p
+    N, D, κ, G, ωI, ζθI, XsI = p
     return κ * ωI(0) + ζθI.(mod.(Θ, 2π), 0) .* G(hcat([[XsI[j](mod(θ, 2π), 0) for j in 1:D] for θ in Θ]...)')
 end
 
@@ -156,7 +156,7 @@ end
 function coupled_conventinal_phase_model(N, D, Nt, dt, XsI, G, ωI, ζθI, initθ, κ, alg=Tsit5())
     X = zeros(Nt, N, D) # states
     Θ = zeros(Nt, N)    # phase
-    integrator = get_ode_integrator(conventinal_coupled_updateΘ, initθ, dt, (N, κ, G, ωI, ζθI, XsI), alg)
+    integrator = get_ode_integrator(conventinal_coupled_updateΘ, initθ, dt, (N, D, κ, G, ωI, ζθI, XsI), alg)
     for tt in 1:Nt
         θ = mod.(copy(integrator.u), 2π)
         Θ[tt, :] = copy(integrator.u)
