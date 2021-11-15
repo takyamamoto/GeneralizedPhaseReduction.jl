@@ -19,6 +19,6 @@ ForwardDiff.jl, LinearAlgebra.jl, Random.jl, Statistics.jl, ProgressMeter.jl, In
 ```
 
 ## Reference
-- K. Wataru, T. Yamamoto, S. Shirasaka, and H. Nakao. "Phase Reduction of Strongly Coupled Limit-Cycle Oscillators." *in prep*.
+- K. Wataru, T. Yamamoto, S. Shirasaka, and H. Nakao. "Phase reduction of strongly coupled limit-cycle oscillators." *in prep*.
 - K. Wataru, S. Shirasaka, and H. Nakao. "Phase reduction method for strongly perturbed limit cycle oscillators." Physical review letters 111.21 (2013): 214101.
 
