@@ -4,6 +4,10 @@
 [![Coverage](https://codecov.io/gh/takyamamoto/GeneralizedPhaseModel.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/takyamamoto/GeneralizedPhaseModel.jl)
 [![Coverage](https://coveralls.io/repos/github/takyamamoto/GeneralizedPhaseModel.jl/badge.svg?branch=main)](https://coveralls.io/github/takyamamoto/GeneralizedPhaseModel.jl?branch=main)
 
+Julia package for generalized phase reduction method.
+
+<img src="https://raw.githubusercontent.com/takyamamoto/GeneralizedPhaseModel.jl/master/figures/fig1.png" width="500px"> 
+
 ## Requirements
 Julia above ver 1.6. 
 
