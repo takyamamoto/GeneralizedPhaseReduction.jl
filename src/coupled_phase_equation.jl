@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-function ComputeQΘ(G, N, D, XsI, κ, ωI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5, λ=0.001, dt=1e-2)
+function compute_QΘ(G, N, D, XsI, κ, ωI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5, λ=0.001, dt=1e-2)
     """
     Compute Q(θ)
 
@@ -51,7 +51,7 @@ function ComputeQΘ(G, N, D, XsI, κ, ωI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5, 
     return sitpQΘ
 end
 
-function ComputeIsΘ(G, N, D, XsI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5)
+function compute_IsΘ(G, N, D, XsI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5)
     """
     Compute I₀(θ)
 
@@ -99,15 +99,6 @@ function ComputeIsΘ(G, N, D, XsI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5)
 
     sitpIΘ = [scale(interpolate(IΘ[i, :, :], BSpline(Cubic(Line(OnGrid())))), Θrange, Θrange) for i in 1:N]
     return sitpIΘ
-end
-
-function low_pass_filter(x, λ=0.01)
-    y = zero(x)
-    y[1] = x[1]
-    for t in 1:size(x)[1]-1
-        y[t+1] = (1-λ) * y[t] + λ * x[t+1]
-    end
-    return y
 end
 
 function conventinal_coupled_updateΘ(Θ, p, t)

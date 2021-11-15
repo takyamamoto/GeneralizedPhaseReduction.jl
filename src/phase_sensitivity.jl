@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Adjoint equation with Euler integration
-function updateZ!(X, Z, input_param, F, JF, ω, dt)
+function update_z!(X, Z, input_param, F, JF, ω, dt)
     """
     Args:
     - X  : State vector ∈ R^D
@@ -23,7 +23,7 @@ function updateZ!(X, Z, input_param, F, JF, ω, dt)
     Z[:] += JF(X, input_param...)' * Z * dt
 end
 
-function FindStablePeriodicSolution(
+function find_stable_periodic_solution(
     F, input_param, D::Int, Nθ::Int, initX=nothing, dt=1e-4, alg=Tsit5(),
     origin_val_idx::Int=1, origin_thr=nothing;
     TREL=200.0, RMAX=Int(5e6), NTRIAL=3, print_progress=true)
@@ -104,11 +104,6 @@ function FindStablePeriodicSolution(
                 # @assert false "Insufficient buffer or wrong time step."
                 println("Insufficient time step. Set dt=", dt, "->", dt*10)
                 dt *= 10.0 # Multiply the time step by ten. Set the first time step small.)
-                """
-                plt.figure(figsize=(5, 4))
-                plt.plot(Xarr[:, 1], Xarr[:, 2])
-                plt.savefig("figure"*string(trial)*".png")
-                """
             end
         end
         if trial >= NTRIAL
@@ -163,7 +158,7 @@ function FindStablePeriodicSolution(
     return T, ω, Xs
 end
 
-function ComputePhaseSensitivityFunction(F, I, D::Int, Nθ::Int, T, Xs::Array, itp="cubic", REP::Int=20)
+function phase_sensitivity_func(F, I, D::Int, Nθ::Int, T, Xs::Array, itp="cubic", REP::Int=20)
     """
     Compute phase sensitivity function Z(θ) with the adjoint method.
 
@@ -192,7 +187,7 @@ function ComputePhaseSensitivityFunction(F, I, D::Int, Nθ::Int, T, Xs::Array, i
     for rep in 1:REP
         for tt in Nθ:-1:1
             X = Xs[: ,tt]
-            updateZ!(X, Z, I, F, JF, ω, dtθ)
+            update_z!(X, Z, I, F, JF, ω, dtθ)
 
             if rep == REP
                 Zθ[:, tt] = Z
@@ -211,7 +206,7 @@ function ComputePhaseSensitivityFunction(F, I, D::Int, Nθ::Int, T, Xs::Array, i
     return Zθ
 end
 
-function ApproxZ(θ, Zθ, Nθ)
+function approx_z(θ, Zθ, Nθ)
     """
     Function to calculate the approximate value of Z(θ)
     with lookup table style using Zθ.

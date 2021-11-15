@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-function ComputeGeneralizedPhaseSensitivityFunction(
+function generalized_phase_sensitivity_func(
     F, Imin, Imax, dI, dims::Int, Nθ::Int, initX=nothing, dt=1e-4, alg=Tsit5(), 
     origin_val_idx::Int=1, origin_thr=nothing, itp="cubic", extrap=false,
     print_progress=true)
@@ -58,8 +58,8 @@ function ComputeGeneralizedPhaseSensitivityFunction(
             initX = initXarray[i, :]
         end
 
-        T, ω, Xs = FindStablePeriodicSolution(F, Irange[i], dims, Nθ, initX, dt, alg, origin_val_idx, origin_thr, print_progress=false)
-        Zθ = ComputePhaseSensitivityFunction(F, Irange[i], dims, Nθ, T, Xs)
+        T, ω, Xs = find_stable_periodic_solution(F, Irange[i], dims, Nθ, initX, dt, alg, origin_val_idx, origin_thr, print_progress=false)
+        Zθ = phase_sensitivity_func(F, Irange[i], dims, Nθ, T, Xs)
 
         ωI[i] = ω
         ZθI[:, :, i] = Zθ
