@@ -6,7 +6,7 @@
 
 Julia package for generalized phase reduction method.
 
-<img src="https://raw.githubusercontent.com/takyamamoto/GeneralizedPhaseModel.jl/master/figures/fig1.png" width="500px"> 
+<img src="https://raw.githubusercontent.com/takyamamoto/GeneralizedPhaseModel.jl/master/figures/fig1.png"> 
 
 ## Requirements
 Julia above ver 1.6. 
