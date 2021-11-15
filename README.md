@@ -5,12 +5,17 @@
 [![Coverage](https://coveralls.io/repos/github/takyamamoto/GeneralizedPhaseModel.jl/badge.svg?branch=main)](https://coveralls.io/github/takyamamoto/GeneralizedPhaseModel.jl?branch=main)
 
 ## Requirements
-- Julia above ver 1.6 
-- ForwardDiff.jl, LinearAlgebra.jl, Random.jl, Statistics.jl, ProgressMeter.jl, Interpolations.jl, DifferentialEquations.jl, Suppressor.jl, PyPlot.jl, Printf.jl
+Julia above ver 1.6. 
 
+### Installation
 Run the following command. 
 ```julia
-pkg > add ForwardDiff, LinearAlgebra, Random, Statistics, ProgressMeter, Interpolations, DifferentialEquations, Suppressor, PyPlot, Printf
+pkg > add https://github.com/takyamamoto/GeneralizedPhaseModel.jl.git
+```
+
+### Dependent packages 
+```
+ForwardDiff.jl, LinearAlgebra.jl, Random.jl, Statistics.jl, ProgressMeter.jl, Interpolations.jl, DifferentialEquations.jl, Suppressor.jl, Printf.jl
 ```
 
 ## Reference
