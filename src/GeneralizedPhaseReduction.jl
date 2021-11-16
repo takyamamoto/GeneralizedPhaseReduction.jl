@@ -1,4 +1,4 @@
-module GeneralizedPhaseModel
+module GeneralizedPhaseReduction
     export eye, vec, 
            update_z!, find_stable_periodic_solution, phase_sensitivity_func, approx_z,
            generalized_phase_sensitivity_func,
