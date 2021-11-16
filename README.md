@@ -1,4 +1,4 @@
-# GeneralizedPhaseModel.jl
+# GeneralizedPhaseReduction.jl
 
 [![Build Status](https://travis-ci.com/takyamamoto/GeneralizedPhaseModel.jl.svg?branch=main)](https://travis-ci.com/takyamamoto/GeneralizedPhaseModel.jl)
 [![Coverage](https://codecov.io/gh/takyamamoto/GeneralizedPhaseModel.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/takyamamoto/GeneralizedPhaseModel.jl)
@@ -14,7 +14,7 @@ Julia above ver 1.6.
 ### Installation
 Run the following command. 
 ```julia
-pkg > add https://github.com/takyamamoto/GeneralizedPhaseModel.jl.git
+pkg > add https://github.com/takyamamoto/GeneralizedPhaseReduction.jl.git
 ```
 
 ### Dependent packages 
