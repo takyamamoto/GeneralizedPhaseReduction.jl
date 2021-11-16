@@ -16,6 +16,10 @@ Suppressor = "fd094767-a336-5f1f-9728-57cf17d0bbfb"
 
 [compat]
 ProgressMeter = "1"
+Interpolations = "0.13"
+Suppressor = "0.2"
+DifferentialEquations = "6"
+ForwardDiff = "0.10"
 julia = "1.6"
 
 [extras]
