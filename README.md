@@ -6,7 +6,7 @@
 
 Julia package for generalized phase reduction method.
 
-<img src="https://raw.githubusercontent.com/takyamamoto/GeneralizedPhaseReduction.jl/master/figures/logo.png" width="30%" align="right" />
+<img src="https://raw.githubusercontent.com/takyamamoto/GeneralizedPhaseReduction.jl/master/figures/logo.png" width="30%" align="left" />
 
 
 ## Requirements
