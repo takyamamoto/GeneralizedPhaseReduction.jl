@@ -6,7 +6,8 @@
 
 Julia package for generalized phase reduction method.
 
-<img src="https://raw.githubusercontent.com/takyamamoto/GeneralizedPhaseModel.jl/master/figures/fig1.png"> 
+<img src="https://raw.githubusercontent.com/takyamamoto/GeneralizedPhaseReduction.jl/master/figures/logo.png" width="20%" align="left" />
+
 
 ## Requirements
 Julia above ver 1.6. 
@@ -21,6 +22,14 @@ pkg > add https://github.com/takyamamoto/GeneralizedPhaseReduction.jl.git
 ```
 ForwardDiff.jl, LinearAlgebra.jl, Random.jl, Statistics.jl, ProgressMeter.jl, Interpolations.jl, DifferentialEquations.jl, Suppressor.jl, Printf.jl
 ```
+
+## Examples
+The document has not been created yet, so please check the examples instead.
+
+`./examples/Fig1_MSLmodel_coupled.ipynb`
+
+<img src="https://raw.githubusercontent.com/takyamamoto/GeneralizedPhaseModel.jl/master/figures/fig1.png"> 
+
 
 ## Reference
 - K. Wataru, T. Yamamoto, S. Shirasaka, and H. Nakao. "Phase reduction of strongly coupled limit-cycle oscillators." *in prep*.
