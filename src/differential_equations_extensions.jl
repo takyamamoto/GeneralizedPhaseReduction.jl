@@ -1,4 +1,5 @@
-function get_ode_integrator(func, u0, dt=nothing, param=nothing, alg=Tsit5(), maxiters=Inf)
+function get_ode_integrator(func, u0, dt=nothing, param=nothing, alg=Tsit5(), maxiters=Inf;
+    reltol=1e-6, abstol=1e-6)
     """
     Args:
     - func : the update function
@@ -22,11 +23,13 @@ function get_ode_integrator(func, u0, dt=nothing, param=nothing, alg=Tsit5(), ma
     else
         integrator = init(prob, alg, dt=dt, adaptive=false, maxiters=maxiters)
     end
+    integrator.opts.reltol = reltol
+    integrator.opts.abstol = abstol
     return integrator
 end
 
 function get_ode_solution(func, u0, tspan, dt=nothing, param=nothing, alg=Tsit5();
-    reltol=1e-8, abstol=1e-8, save_everystep=true)
+    reltol=1e-6, abstol=1e-6, save_everystep=true)
     """
     Args:
     - f   : the update function
