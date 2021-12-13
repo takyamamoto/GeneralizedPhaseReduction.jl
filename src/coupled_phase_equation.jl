@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-function compute_QΘ(G, N, D, XsI, κ, ωI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5, λ=0.001, dt=1e-2)
+function compute_QΘ(G, N, D, XsI, κ, ωI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5, ρ=0.1, dt=1e-2)
     """
     Compute Q(θ)
 
@@ -16,6 +16,7 @@ function compute_QΘ(G, N, D, XsI, κ, ωI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5,
     Θ = zeros(N)
     Θrange = range(0, 2π, length=NΘ)
     QΘ = zeros(N, NΘ, NΘ)
+    α = ρ*dt
     
     @showprogress "Computing P(θ₁, θ₂)..." for m in 1:NΘ
         for n in 1:NΘ
@@ -35,7 +36,7 @@ function compute_QΘ(G, N, D, XsI, κ, ωI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5,
                     for i in 1:N
                         X[i, :] = [XsI[j](mod(Θ[i] - κ[i] * ωI(Qₜ[i]) * s, 2π), Qₜ[i]) for j in 1:D]
                     end
-                    Qₜ += λ*(G(X) - Qₜ)
+                    Qₜ += α*(G(X) - Qₜ)
                 end
 
                 if sum(abs.(Qₜ .- Qₜ₋₁)) <  ϵ # check convergence
