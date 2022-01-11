@@ -13,42 +13,35 @@ function compute_QΘ(G, N, D, XsI, κ, ωI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5,
     """
 
     X = zeros(N, D)
-    Θ = zeros(N)
+    Θ, Θ̃ = zeros(N), zeros(N)
     Θrange = range(0, 2π, length=NΘ)
-    QΘ = zeros(N, NΘ, NΘ)
+    Qₜ = zeros(N, NΘ, NΘ)
     α = ρ*dt
     
-    @showprogress "Computing P(θ₁, θ₂)..." for m in 1:NΘ
-        for n in 1:NΘ
-            Θ = [Θrange[m], Θrange[n]]
-            # initial Q
-            if n > 1
-                Qₜ = copy(QΘ[:, m, n-1])
-            else
-                Qₜ = zeros(N)
-            end
-
-            # Low pass filter
-            for tt in 1:ttmax
-                Qₜ₋₁ = copy(Qₜ)
-                
-                for s in 1:-dt:0
+    @showprogress "Computing P(θ₁, θ₂)..." for tt in 1:ttmax
+        Qₜ₋₁ = copy(Qₜ)
+        
+        for m in 1:NΘ
+            for n in 1:NΘ
+                Θ = [Θrange[m], Θrange[n]]
+                for s in 1:-dt:0 
                     for i in 1:N
-                        X[i, :] = [XsI[j](mod(Θ[i] - κ[i] * ωI(Qₜ[i]) * s, 2π), Qₜ[i]) for j in 1:D]
+                        Θ̃[i] = mod(Θ[i] - κ[i] * ωI(Qₜ[i, m, n]) * s, 2π)
                     end
-                    Qₜ += α*(G(X) - Qₜ)
-                end
-
-                if sum(abs.(Qₜ .- Qₜ₋₁)) <  ϵ # check convergence
-                    break
+                    Θ̃indices = clamp.(floor.(Int, Θ̃/(2π)*NΘ) .+ 1, 1, NΘ)
+                    for i in 1:N
+                        #X[i, :] = [XsI[j](Θ̃[i], Qₜ[i, m, n]) for j in 1:D] # for approximation
+                        X[i, :] = [XsI[j](Θ̃[i], Qₜ[i, Θ̃indices...]) for j in 1:D]
+                    end
+                    Qₜ[:, m, n] += α*(G(X) - Qₜ[:, m, n]) # low-pass filter
                 end
             end
-
-            QΘ[:, m, n] = Qₜ # save
+        end
+        if sum(abs.(Qₜ .- Qₜ₋₁))/(NΘ^2) < ϵ # check convergence
+            break
         end
     end
-
-    sitpQΘ = [scale(interpolate(QΘ[i, :, :], BSpline(Cubic(Line(OnGrid())))), Θrange, Θrange) for i in 1:N]
+    sitpQΘ = [scale(interpolate(Qₜ[i, :, :], BSpline(Cubic(Line(OnGrid())))), Θrange, Θrange) for i in 1:N]
     return sitpQΘ
 end
 
