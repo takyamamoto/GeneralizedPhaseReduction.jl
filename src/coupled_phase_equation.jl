@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-function compute_QΘ(G, N, D, XsI, κ, ωI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5, λ=0.001, dt=1e-2)
+function compute_QΘ(G, N, D, XsI, κ, ωI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5, ρ=0.1, dt=1e-2)
     """
     Compute Q(θ)
 
@@ -16,6 +16,7 @@ function compute_QΘ(G, N, D, XsI, κ, ωI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5,
     Θ = zeros(N)
     Θrange = range(0, 2π, length=NΘ)
     QΘ = zeros(N, NΘ, NΘ)
+    α = ρ*dt
     
     @showprogress "Computing P(θ₁, θ₂)..." for m in 1:NΘ
         for n in 1:NΘ
@@ -35,7 +36,7 @@ function compute_QΘ(G, N, D, XsI, κ, ωI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5,
                     for i in 1:N
                         X[i, :] = [XsI[j](mod(Θ[i] - κ[i] * ωI(Qₜ[i]) * s, 2π), Qₜ[i]) for j in 1:D]
                     end
-                    Qₜ += λ*(G(X) - Qₜ)
+                    Qₜ += α*(G(X) - Qₜ)
                 end
 
                 if sum(abs.(Qₜ .- Qₜ₋₁)) <  ϵ # check convergence
@@ -136,6 +137,8 @@ function phase2cum_phase(Θ, N)
     return Θcumsum = [Θ[1, :]'; Θcumsum]
 end
 
+# +
+# for fixed time steps
 function coupled_original_system(N, D, Nt, dt, XsI, G, coupled_func, initθ, κ, alg=Tsit5())
     X = zeros(Nt, N, D)
     Θg, Θc = zeros(Nt, N), zeros(Nt, N);
@@ -153,6 +156,27 @@ function coupled_original_system(N, D, Nt, dt, XsI, G, coupled_func, initθ, κ,
     return X, Θg_cumsum, Θc_cumsum
 end
 
+# for adaptive time step
+function coupled_original_system(N, D, T, XsI, G, coupled_func, initθ, κ, alg=Tsit5())
+    initX = hcat([[XsI[j](mod(θ, 2π), 0) for j in 1:D] for θ in initθ]...)'
+    sol = get_ode_solution(coupled_func, initX, (0, T), nothing, (G, κ), alg, reltol=1e-8, abstol=1e-8)
+    Nt = length(sol.u)
+    X = zeros(Nt, N, D)
+    Θg, Θc = zeros(Nt, N), zeros(Nt, N);
+    for tt in 1:Nt
+        x = sol.u[tt]
+        X[tt, :, :] = x # memory
+        Θg[tt, :] = mod.(atan.(x[:, 2], x[:, 1] - G(x)), 2π)
+        Θc[tt, :] = mod.(atan.(x[:, 2], x[:, 1]), 2π)
+    end
+    Θg_cumsum = phase2cum_phase(Θg, N)
+    Θc_cumsum = phase2cum_phase(Θc, N)
+    
+    return sol.t, X, Θg_cumsum, Θc_cumsum
+end
+
+# +
+# for fixed time steps
 function coupled_conventinal_phase_model(N, D, Nt, dt, XsI, G, ωI, ζθI, initθ, κ, alg=Tsit5())
     X = zeros(Nt, N, D) # states
     Θ = zeros(Nt, N)    # phase
@@ -160,7 +184,6 @@ function coupled_conventinal_phase_model(N, D, Nt, dt, XsI, G, ωI, ζθI, init�
     for tt in 1:Nt
         θ = mod.(copy(integrator.u), 2π)
         Θ[tt, :] = copy(integrator.u)
-        Iext = G(hcat([[XsI[j](phase, 0) for j in 1:D] for phase in θ]...)')
         for i in 1:N
             X[tt, i, :] = [XsI[j](θ[i], 0) for j in 1:D]
         end
@@ -169,6 +192,23 @@ function coupled_conventinal_phase_model(N, D, Nt, dt, XsI, G, ωI, ζθI, init�
     return X, Θ
 end
 
+# for adaptive time step
+function coupled_conventinal_phase_model(N, D, T, XsI, G, ωI, ζθI, initθ, κ, alg=Tsit5())
+    sol = get_ode_solution(conventinal_coupled_updateΘ, initθ, (0, T), nothing, (N, D, κ, G, ωI, ζθI, XsI), 
+                           alg, reltol=1e-8, abstol=1e-8);
+    Θ = hcat(sol.u...)';
+    Nt = length(sol.u)
+    X = zeros(Nt, N, D)
+    for tt in 1:Nt
+        for i in 1:N
+            X[tt, i, :] = [XsI[j](mod(Θ[tt, i], 2π), 0) for j in 1:D] # memory
+        end
+    end    
+    return sol.t, X, Θ
+end
+
+# +
+# for fixed time steps
 function coupled_generalized_phase_model_I(N, D, Nt, dt, XsI, IΘ, ωI, ξθI, initθ, κ, alg=Tsit5())
     X = zeros(Nt, N, D) # states
     Θ = zeros(Nt, N)    # phase
@@ -184,6 +224,23 @@ function coupled_generalized_phase_model_I(N, D, Nt, dt, XsI, IΘ, ωI, ξθI, i
     return X, Θ
 end
 
+# for adaptive time step
+function coupled_generalized_phase_model_I(N, D, T, XsI, IΘ, ωI, ξθI, initθ, κ, alg=Tsit5())
+    sol = get_ode_solution(generalized_coupled_updateΘ_I, initθ, (0, T), nothing, (N, κ, IΘ, ωI, ξθI), 
+                           alg, reltol=1e-8, abstol=1e-8);
+    Θ = hcat(sol.u...)';
+    Nt = length(sol.u)
+    X = zeros(Nt, N, D)
+    for tt in 1:Nt
+        for i in 1:N
+            X[tt, i, :] = [XsI[j](mod(Θ[tt, i], 2π), IΘ[i](mod.(Θ[tt, :], 2π)...)) for j in 1:D] # memory
+        end
+    end    
+    return sol.t, X, Θ
+end
+
+# +
+# for fixed time steps
 function coupled_generalized_phase_model_PQ(N, D, Nt, dt, XsI, QΘ, ωI, ζθI, ξθI, initθ, κ, G, alg=Tsit5())
     X = zeros(Nt, N, D) # states
     Θ = zeros(Nt, N)    # phase
@@ -199,4 +256,22 @@ function coupled_generalized_phase_model_PQ(N, D, Nt, dt, XsI, QΘ, ωI, ζθI, 
         step!(integrator, dt, true) # update
     end
     return X, Θ
+end
+
+# for adaptive time step
+function coupled_generalized_phase_model_PQ(N, D, T, XsI, QΘ, ωI, ζθI, ξθI, initθ, κ, G, alg=Tsit5())
+    sol = get_ode_solution(generalized_coupled_updateΘ_PQ, initθ, (0, T), nothing, (N, D, κ, G, QΘ, ωI, ζθI, ξθI, XsI), 
+                           alg, reltol=1e-8, abstol=1e-8);
+    Θ = hcat(sol.u...)';
+    Nt = length(sol.u)
+    X = zeros(Nt, N, D)
+    for tt in 1:Nt
+        θ = mod.(Θ[tt, :], 2π)
+        q̂ = [QΘ[i](θ...) for i in 1:N]
+        Iext = G(hcat([[XsI[j](θ[i], q̂[i]) for j in 1:D] for i in 1:N]...)')
+        for i in 1:N
+            X[tt, i, :] = [XsI[j](θ[i], Iext[i]) for j in 1:D]
+        end
+    end    
+    return sol.t, X, Θ
 end
