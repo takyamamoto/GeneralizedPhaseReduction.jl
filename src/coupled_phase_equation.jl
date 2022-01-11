@@ -139,7 +139,7 @@ end
 
 # +
 # for fixed time steps
-function coupled_original_system(N, D, Nt, dt, XsI, G, coupled_func, initθ, κ, alg=Tsit5())
+function coupled_original_system(N::Int, D::Int, Nt::Int, dt::Float, XsI, G, coupled_func, initθ, κ, alg=Tsit5())
     X = zeros(Nt, N, D)
     Θg, Θc = zeros(Nt, N), zeros(Nt, N);
     initX = hcat([[XsI[j](mod(θ, 2π), 0) for j in 1:D] for θ in initθ]...)'
@@ -157,7 +157,7 @@ function coupled_original_system(N, D, Nt, dt, XsI, G, coupled_func, initθ, κ,
 end
 
 # for adaptive time step
-function coupled_original_system(N, D, T, XsI, G, coupled_func, initθ, κ, alg=Tsit5())
+function coupled_original_system(N::Int, D::Int, T::Float, XsI, G, coupled_func, initθ, κ, alg=Tsit5())
     initX = hcat([[XsI[j](mod(θ, 2π), 0) for j in 1:D] for θ in initθ]...)'
     sol = get_ode_solution(coupled_func, initX, (0, T), nothing, (G, κ), alg, reltol=1e-8, abstol=1e-8)
     Nt = length(sol.u)
@@ -177,7 +177,7 @@ end
 
 # +
 # for fixed time steps
-function coupled_conventinal_phase_model(N, D, Nt, dt, XsI, G, ωI, ζθI, initθ, κ, alg=Tsit5())
+function coupled_conventinal_phase_model(N::Int, D::Int, Nt::Int, dt::Float, XsI, G, ωI, ζθI, initθ, κ, alg=Tsit5())
     X = zeros(Nt, N, D) # states
     Θ = zeros(Nt, N)    # phase
     integrator = get_ode_integrator(conventinal_coupled_updateΘ, initθ, dt, (N, D, κ, G, ωI, ζθI, XsI), alg)
@@ -193,7 +193,7 @@ function coupled_conventinal_phase_model(N, D, Nt, dt, XsI, G, ωI, ζθI, init�
 end
 
 # for adaptive time step
-function coupled_conventinal_phase_model(N, D, T, XsI, G, ωI, ζθI, initθ, κ, alg=Tsit5())
+function coupled_conventinal_phase_model(N::Int, D::Int, T::Float, XsI, G, ωI, ζθI, initθ, κ, alg=Tsit5())
     sol = get_ode_solution(conventinal_coupled_updateΘ, initθ, (0, T), nothing, (N, D, κ, G, ωI, ζθI, XsI), 
                            alg, reltol=1e-8, abstol=1e-8);
     Θ = hcat(sol.u...)';
@@ -209,7 +209,7 @@ end
 
 # +
 # for fixed time steps
-function coupled_generalized_phase_model_I(N, D, Nt, dt, XsI, IΘ, ωI, ξθI, initθ, κ, alg=Tsit5())
+function coupled_generalized_phase_model_I(N::Int, D::Int, Nt::Int, dt::Float, XsI, IΘ, ωI, ξθI, initθ, κ, alg=Tsit5())
     X = zeros(Nt, N, D) # states
     Θ = zeros(Nt, N)    # phase
     integrator = get_ode_integrator(generalized_coupled_updateΘ_I, initθ, dt, (N, κ, IΘ, ωI, ξθI), alg)
@@ -225,7 +225,7 @@ function coupled_generalized_phase_model_I(N, D, Nt, dt, XsI, IΘ, ωI, ξθI, i
 end
 
 # for adaptive time step
-function coupled_generalized_phase_model_I(N, D, T, XsI, IΘ, ωI, ξθI, initθ, κ, alg=Tsit5())
+function coupled_generalized_phase_model_I(N::Int, D::Int, T::Float, XsI, IΘ, ωI, ξθI, initθ, κ, alg=Tsit5())
     sol = get_ode_solution(generalized_coupled_updateΘ_I, initθ, (0, T), nothing, (N, κ, IΘ, ωI, ξθI), 
                            alg, reltol=1e-8, abstol=1e-8);
     Θ = hcat(sol.u...)';
@@ -241,7 +241,7 @@ end
 
 # +
 # for fixed time steps
-function coupled_generalized_phase_model_PQ(N, D, Nt, dt, XsI, QΘ, ωI, ζθI, ξθI, initθ, κ, G, alg=Tsit5())
+function coupled_generalized_phase_model_PQ(N::Int, D::Int, Nt::Int, dt::Float, XsI, QΘ, ωI, ζθI, ξθI, initθ, κ, G, alg=Tsit5())
     X = zeros(Nt, N, D) # states
     Θ = zeros(Nt, N)    # phase
     integrator = get_ode_integrator(generalized_coupled_updateΘ_PQ, initθ, dt, (N, D, κ, G, QΘ, ωI, ζθI, ξθI, XsI), alg)
@@ -259,7 +259,7 @@ function coupled_generalized_phase_model_PQ(N, D, Nt, dt, XsI, QΘ, ωI, ζθI, 
 end
 
 # for adaptive time step
-function coupled_generalized_phase_model_PQ(N, D, T, XsI, QΘ, ωI, ζθI, ξθI, initθ, κ, G, alg=Tsit5())
+function coupled_generalized_phase_model_PQ(N::Int, D::Int, T::Float, XsI, QΘ, ωI, ζθI, ξθI, initθ, κ, G, alg=Tsit5())
     sol = get_ode_solution(generalized_coupled_updateΘ_PQ, initθ, (0, T), nothing, (N, D, κ, G, QΘ, ωI, ζθI, ξθI, XsI), 
                            alg, reltol=1e-8, abstol=1e-8);
     Θ = hcat(sol.u...)';
