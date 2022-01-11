@@ -152,7 +152,7 @@ end
 # for adaptive time step
 function coupled_original_system(N::Int, D::Int, T::Float64, XsI, G, coupled_func, initθ, κ, alg=Tsit5())
     initX = hcat([[XsI[j](mod(θ, 2π), 0) for j in 1:D] for θ in initθ]...)'
-    sol = get_ode_solution(coupled_func, initX, (0, T), nothing, (G, κ), alg, reltol=1e-8, abstol=1e-8)
+    sol = get_ode_solution(coupled_func, initX, (0, T), nothing, (G, κ), alg)
     Nt = length(sol.u)
     X = zeros(Nt, N, D)
     Θg, Θc = zeros(Nt, N), zeros(Nt, N);
@@ -187,8 +187,7 @@ end
 
 # for adaptive time step
 function coupled_conventinal_phase_model(N::Int, D::Int, T::Float64, XsI, G, ωI, ζθI, initθ, κ, alg=Tsit5())
-    sol = get_ode_solution(conventinal_coupled_updateΘ, initθ, (0, T), nothing, (N, D, κ, G, ωI, ζθI, XsI), 
-                           alg, reltol=1e-8, abstol=1e-8);
+    sol = get_ode_solution(conventinal_coupled_updateΘ, initθ, (0, T), nothing, (N, D, κ, G, ωI, ζθI, XsI), alg);
     Θ = hcat(sol.u...)';
     Nt = length(sol.u)
     X = zeros(Nt, N, D)
@@ -219,8 +218,7 @@ end
 
 # for adaptive time step
 function coupled_generalized_phase_model_I(N::Int, D::Int, T::Float64, XsI, IΘ, ωI, ξθI, initθ, κ, alg=Tsit5())
-    sol = get_ode_solution(generalized_coupled_updateΘ_I, initθ, (0, T), nothing, (N, κ, IΘ, ωI, ξθI), 
-                           alg, reltol=1e-8, abstol=1e-8);
+    sol = get_ode_solution(generalized_coupled_updateΘ_I, initθ, (0, T), nothing, (N, κ, IΘ, ωI, ξθI), alg);
     Θ = hcat(sol.u...)';
     Nt = length(sol.u)
     X = zeros(Nt, N, D)
@@ -254,7 +252,7 @@ end
 # for adaptive time step
 function coupled_generalized_phase_model_PQ(N::Int, D::Int, T::Float64, XsI, QΘ, ωI, ζθI, ξθI, initθ, κ, G, alg=Tsit5())
     sol = get_ode_solution(generalized_coupled_updateΘ_PQ, initθ, (0, T), nothing, (N, D, κ, G, QΘ, ωI, ζθI, ξθI, XsI), 
-                           alg, reltol=1e-8, abstol=1e-8);
+                           alg);
     Θ = hcat(sol.u...)';
     Nt = length(sol.u)
     X = zeros(Nt, N, D)
