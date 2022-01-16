@@ -32,6 +32,6 @@ The document has not been created yet, so please check the examples instead.
 
 
 ## Reference
-- W. Kurebayashi, T. Yamamoto, S. Shirasaka, and H. Nakao. "Phase reduction of strongly coupled limit-cycle oscillators." *in prep*.
+- W. Kurebayashi, T. Yamamoto, S. Shirasaka, and H. Nakao. "Phase Reduction of Limit-Cycle Oscillators with Largely Varying Coupling." *in prep*.
 - W. Kurebayashi, S. Shirasaka, and H. Nakao. "Phase reduction method for strongly perturbed limit cycle oscillators." Physical review letters 111.21 (2013): 214101.
 
