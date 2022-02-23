@@ -28,10 +28,10 @@ function compute_QΘ(G, N, D, XsI, κ, ωI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5,
                     for i in 1:N
                         Θ̃[i] = mod(Θ[i] - κ[i] * ωI(Qₜ[i, m, n]) * s, 2π)
                     end
-                    Θ̃indices = clamp.(floor.(Int, Θ̃/(2π)*NΘ) .+ 1, 1, NΘ)
+                    #Θ̃indices = clamp.(floor.(Int, Θ̃/(2π)*NΘ) .+ 1, 1, NΘ)
                     for i in 1:N
-                        #X[i, :] = [XsI[j](Θ̃[i], Qₜ[i, m, n]) for j in 1:D] # for approximation
-                        X[i, :] = [XsI[j](Θ̃[i], Qₜ[i, Θ̃indices...]) for j in 1:D]
+                        X[i, :] = [XsI[j](Θ̃[i], Qₜ[i, m, n]) for j in 1:D] # for approximation
+                        #X[i, :] = [XsI[j](Θ̃[i], Qₜ[i, Θ̃indices...]) for j in 1:D]
                     end
                     Qₜ[:, m, n] += α*(G(X) - Qₜ[:, m, n]) # low-pass filter
                 end
