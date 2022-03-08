@@ -122,7 +122,10 @@ function generalized_coupled_updateΘ_PQ(Θ, p, t)
 end
 
 function phase2cum_phase(Θ, N)
-    ΔΘ = mod.(Θ[2:end, :] - Θ[1:end-1, :], 2π);
+    ΔΘ = Θ[2:end, :] - Θ[1:end-1, :]
+    idx = -0.1 .< ΔΘ .< 0
+    ΔΘ[idx] .= 0;
+    ΔΘ = mod.(ΔΘ, 2π);
     Θcumsum = cumsum(ΔΘ, dims=1);
     for i in 1:N
         Θcumsum[:, i] .+= Θ[1, i]
