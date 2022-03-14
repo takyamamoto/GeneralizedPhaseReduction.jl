@@ -122,6 +122,7 @@ function generalized_coupled_updateΘ_PQ(Θ, p, t)
 end
 
 function phase2cum_phase(Θ, N)
+    ΔΘ = Θ[2:end, :] - Θ[1:end-1, :]
     idx = ΔΘ .< -1.9π # detect phase jump point
     ΔΘ[idx] .= mod.(ΔΘ[idx], 2π);
     Θcumsum = cumsum(ΔΘ, dims=1);
