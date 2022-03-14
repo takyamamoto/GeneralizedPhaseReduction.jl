@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    inkscape:export-ydpi="300"
    inkscape:export-xdpi="300"
    inkscape:export-filename="D:\data\Github\GeneralizedPhaseModel.jl\examples\g10098.png"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
    sodipodi:docname="fig2.svg"
    id="svg2830"
    version="1.1"
    viewBox="0 0 771.57819 401.50546"
    height="401.50546pt"
-   width="771.57819pt">
+   width="771.57819pt"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <sodipodi:namedview
      fit-margin-bottom="0"
      fit-margin-right="0"
@@ -26,13 +26,13 @@
      inkscape:current-layer="svg2830"
      inkscape:window-maximized="1"
      inkscape:window-y="-8"
-     inkscape:window-x="1912"
-     inkscape:cy="128.93416"
-     inkscape:cx="575.07566"
+     inkscape:window-x="-8"
+     inkscape:cy="129.59327"
+     inkscape:cx="574.65358"
      inkscape:zoom="0.67518939"
      showgrid="false"
      id="namedview2832"
-     inkscape:window-height="1017"
+     inkscape:window-height="1009"
      inkscape:window-width="1920"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0"
@@ -41,7 +41,9 @@
      objecttolerance="10"
      borderopacity="1"
      bordercolor="#666666"
-     pagecolor="#ffffff" />
+     pagecolor="#ffffff"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="pt" />
   <metadata
      id="metadata2">
     <rdf:RDF>
@@ -55,7 +57,6 @@
             <dc:title>Matplotlib v3.5.1, https://matplotlib.org/</dc:title>
           </cc:Agent>
         </dc:creator>
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
