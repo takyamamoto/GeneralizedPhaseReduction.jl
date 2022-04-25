@@ -7,6 +7,9 @@
    id="svg1118"
    sodipodi:docname="figS2.svg"
    inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   inkscape:export-filename="D:\github\GeneralizedPhaseReduction.jl\figures\figS2.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -30,8 +33,8 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="1.1223479"
-     inkscape:cx="334.12101"
-     inkscape:cy="44.103973"
+     inkscape:cx="334.121"
+     inkscape:cy="44.103972"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
      inkscape:window-x="-8"
@@ -70,7 +73,7 @@
   </g>
   <g
      id="text_10"
-     transform="translate(-20.04726,-25.411622)">
+     transform="translate(-16.037808,-25.411622)">
     <!-- (a) -->
     <g
        transform="matrix(0.16,0,0,-0.16,21.199889,45.922311)"
@@ -1706,7 +1709,8 @@
            id="path552" />
       </g>
       <g
-         id="text_13">
+         id="text_13"
+         transform="translate(2.9186682)">
         <!-- reconstructed -->
         <g
            transform="matrix(0.14,0,0,-0.14,103.041,117.96003)"
@@ -1867,7 +1871,7 @@
   </g>
   <g
      id="text_24"
-     transform="translate(1.6871455,-25.411622)">
+     transform="translate(-2.3223065,-25.411622)">
     <!-- (b) -->
     <g
        transform="matrix(0.16,0,0,-0.16,297.29586,45.922311)"
@@ -3170,219 +3174,6 @@
            y="0"
            width="100%"
            height="100%" />
-      </g>
-    </g>
-    <g
-       id="legend_2">
-      <g
-         id="text_26">
-        <!-- actual -->
-        <g
-           transform="matrix(0.14,0,0,-0.14,423.21866,104.048)"
-           id="g1057">
-          <use
-             xlink:href="#CMR17-61"
-             transform="scale(0.996264)"
-             id="use1045"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-63"
-             transform="matrix(0.996264,0,0,0.996264,45.690477,0)"
-             id="use1047"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-74"
-             transform="matrix(0.996264,0,0,0.996264,86.176138,0)"
-             id="use1049"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-75"
-             transform="matrix(0.996264,0,0,0.996264,121.45691,0)"
-             id="use1051"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-61"
-             transform="matrix(0.996264,0,0,0.996264,172.35227,0)"
-             id="use1053"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-6c"
-             transform="matrix(0.996264,0,0,0.996264,218.04275,0)"
-             id="use1055"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-        </g>
-      </g>
-      <g
-         id="line2d_125">
-        <path
-           d="m 470.83727,99.148 h 14 14"
-           style="fill:none;stroke:#ff9896;stroke-width:1.5;stroke-linecap:square"
-           id="path1060" />
-      </g>
-      <g
-         id="text_27">
-        <!-- reconstructed -->
-        <g
-           transform="matrix(0.14,0,0,-0.14,379.13697,117.96003)"
-           id="g1089">
-          <use
-             xlink:href="#CMR17-72"
-             transform="scale(0.996264)"
-             id="use1063"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-65"
-             transform="matrix(0.996264,0,0,0.996264,35.280768,0)"
-             id="use1065"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-63"
-             transform="matrix(0.996264,0,0,0.996264,75.766428,0)"
-             id="use1067"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-6f"
-             transform="matrix(0.996264,0,0,0.996264,116.25209,0)"
-             id="use1069"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-6e"
-             transform="matrix(0.996264,0,0,0.996264,161.94257,0)"
-             id="use1071"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-73"
-             transform="matrix(0.996264,0,0,0.996264,212.83794,0)"
-             id="use1073"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-74"
-             transform="matrix(0.996264,0,0,0.996264,248.63927,0)"
-             id="use1075"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-72"
-             transform="matrix(0.996264,0,0,0.996264,283.92004,0)"
-             id="use1077"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-75"
-             transform="matrix(0.996264,0,0,0.996264,319.20081,0)"
-             id="use1079"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-63"
-             transform="matrix(0.996264,0,0,0.996264,370.09618,0)"
-             id="use1081"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-74"
-             transform="matrix(0.996264,0,0,0.996264,410.58184,0)"
-             id="use1083"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-65"
-             transform="matrix(0.996264,0,0,0.996264,445.86261,0)"
-             id="use1085"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-          <use
-             xlink:href="#CMR17-64"
-             transform="matrix(0.996264,0,0,0.996264,486.34827,0)"
-             id="use1087"
-             x="0"
-             y="0"
-             width="100%"
-             height="100%" />
-        </g>
-      </g>
-      <g
-         id="line2d_126">
-        <path
-           d="m 470.83727,113.06003 h 14 14"
-           style="fill:none;stroke:#000000;stroke-width:1.5;stroke-dasharray:5.55, 2.4;stroke-dashoffset:0"
-           id="path1092" />
-      </g>
-      <g
-         id="text_28">
-        <!-- \  -->
-        <g
-           transform="matrix(0.14,0,0,-0.14,498.83727,104.048)"
-           id="g1095" />
-      </g>
-      <g
-         id="line2d_127">
-        <path
-           d="m 510.03727,99.148 h 14 14"
-           style="fill:none;stroke:#aec7e8;stroke-width:1.5;stroke-linecap:square"
-           id="path1098" />
-      </g>
-      <g
-         id="text_29">
-        <!-- \  -->
-        <g
-           transform="matrix(0.14,0,0,-0.14,498.83727,117.96003)"
-           id="g1101" />
-      </g>
-      <g
-         id="line2d_128">
-        <path
-           d="m 510.03727,113.06003 h 14 14"
-           style="fill:none;stroke:#808080;stroke-width:1.5;stroke-dasharray:5.55, 2.4;stroke-dashoffset:0"
-           id="path1104" />
       </g>
     </g>
   </g>

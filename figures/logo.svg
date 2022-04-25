@@ -2,13 +2,16 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="102.15208mm"
-   height="94.197472mm"
-   viewBox="0 0 102.15208 94.197472"
+   width="109.11082mm"
+   height="98.655113mm"
+   viewBox="0 0 109.11083 98.655114"
    version="1.1"
    id="svg5"
    inkscape:version="1.1 (c68e22c387, 2021-05-23)"
    sodipodi:docname="logo.svg"
+   inkscape:export-filename="D:\github\GeneralizedPhaseReduction.jl\figures\logo.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -25,10 +28,10 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.0120606"
-     inkscape:cx="4.9404157"
-     inkscape:cy="101.27852"
+     inkscape:cx="16.797413"
+     inkscape:cy="111.15935"
      inkscape:window-width="1920"
-     inkscape:window-height="1017"
+     inkscape:window-height="1009"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -1072,7 +1075,14 @@
      inkscape:label="レイヤー 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-29.665894,-48.792601)">
+     transform="translate(-26.614418,-46.262492)">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.357318;stroke-linecap:square;stroke-linejoin:bevel;paint-order:markers stroke fill"
+       id="rect1257"
+       width="108.75351"
+       height="98.297798"
+       x="26.793077"
+       y="46.441151" />
     <g
        id="g1515"
        transform="matrix(0.35277777,0,0,-0.35277777,-115.7993,286.54375)" />

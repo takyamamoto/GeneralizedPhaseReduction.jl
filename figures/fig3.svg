@@ -33,14 +33,14 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="0.56117394"
-     inkscape:cx="623.69254"
-     inkscape:cy="20.492755"
+     inkscape:cx="434.8028"
+     inkscape:cy="89.989924"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg4842" />
+     inkscape:current-layer="legend_6" />
   <metadata
      id="metadata2">
     <rdf:RDF>
@@ -4788,7 +4788,8 @@
            id="path1618" />
       </g>
       <g
-         id="text_33">
+         id="text_33"
+         transform="translate(4.6499975)">
         <!-- phase eq. [conventional] -->
         <g
            transform="matrix(0.14,0,0,-0.14,428.97499,88.8128)"
@@ -6722,7 +6723,8 @@
            id="path2268" />
       </g>
       <g
-         id="text_41">
+         id="text_41"
+         transform="translate(4.6499975)">
         <!-- phase eq. [conventional] -->
         <g
            transform="matrix(0.14,0,0,-0.14,428.97499,242.33895)"
@@ -8684,7 +8686,8 @@
            id="path2916" />
       </g>
       <g
-         id="text_57">
+         id="text_57"
+         transform="translate(4.6499875)">
         <!-- phase eq. [conventional] -->
         <g
            transform="matrix(0.14,0,0,-0.14,468.175,344.68972)"
@@ -10558,7 +10561,8 @@
            id="path3549" />
       </g>
       <g
-         id="text_64">
+         id="text_64"
+         transform="translate(3.1810431)">
         <!-- phase eq. [proposed] -->
         <g
            transform="matrix(0.14,0,0,-0.14,823.49418,88.8128)"
@@ -12148,7 +12152,8 @@
            id="path4088" />
       </g>
       <g
-         id="text_71">
+         id="text_71"
+         transform="translate(3.1810431)">
         <!-- phase eq. [proposed] -->
         <g
            transform="matrix(0.14,0,0,-0.14,823.49418,242.33895)"
@@ -14164,7 +14169,8 @@
            id="path4762" />
       </g>
       <g
-         id="text_87">
+         id="text_87"
+         transform="translate(3.1810431)">
         <!-- phase eq. [proposed] -->
         <g
            transform="matrix(0.14,0,0,-0.14,862.69418,344.68972)"
