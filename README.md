@@ -6,7 +6,7 @@
 
 Julia package for generalized phase reduction method.
 
-<img src="https://raw.githubusercontent.com/takyamamoto/GeneralizedPhaseReduction.jl/master/figures/logo.png" width="30%" align="left" />
+<img src="https://raw.githubusercontent.com/takyamamoto/GeneralizedPhaseReduction.jl/master/figures/logo.png" width="30%" align="right" />
 
 
 ## Requirements
@@ -24,7 +24,8 @@ ForwardDiff.jl, LinearAlgebra.jl, Random.jl, Statistics.jl, ProgressMeter.jl, In
 ```
 
 ## Examples
-The document has not been created yet, so please check the examples instead.
+> **Note**
+> The document has not been created yet, so please check the examples instead.
 
 `./examples/Fig1_MSLmodel_coupled.ipynb`
 
