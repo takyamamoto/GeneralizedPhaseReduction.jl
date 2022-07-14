@@ -27,7 +27,7 @@ ForwardDiff.jl, LinearAlgebra.jl, Random.jl, Statistics.jl, ProgressMeter.jl, In
 > **Note**
 > The document has not been created yet, so please check the examples instead.
 
-`./examples/Fig1_MSLmodel_coupled.ipynb`
+`./examples/Fig1_MSLmodel_two_coupled.ipynb`
 
 <img src="https://raw.githubusercontent.com/takyamamoto/GeneralizedPhaseModel.jl/master/figures/fig1.png"> 
 
