@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 module GeneralizedPhaseReduction
-    export eye, vec, 
-           update_z!, find_stable_periodic_solution, phase_sensitivity_func, approx_z,
+    export update_z!, find_stable_periodic_solution, phase_sensitivity_func, approx_z,
            generalized_phase_sensitivity_func,
            get_ode_integrator, get_ode_solution,
            compute_QΘ, compute_IsΘ, conventinal_coupled_updateΘ, 
@@ -19,7 +18,6 @@ module GeneralizedPhaseReduction
     using Suppressor
     using Printf
 
-    include("utils.jl")
     include("phase_sensitivity.jl")
     include("generalized_phase_sensitivity.jl")
     include("differential_equations_extensions.jl")
