@@ -95,29 +95,30 @@ function compute_IsΘ(G, N, D, XsI, NΘ::Int=50, ttmax::Int=50, ϵ=1e-5)
     return sitpIΘ
 end
 
-function conventinal_coupled_updateΘ(Θ, p, t)
+function conventinal_coupled_updateΘ(dΘ, Θ, p, t)
     N, D, κ, G, ωI, ζθI, XsI = p
-    return κ * ωI(0) + ζθI.(mod.(Θ, 2π), 0) .* G(hcat([[XsI[j](mod(θ, 2π), 0) for j in 1:D] for θ in Θ]...)')
+    dΘ[:] = κ * ωI(0) + ζθI.(mod.(Θ, 2π), 0) .* G(hcat([[XsI[j](mod(θ, 2π), 0) for j in 1:D] for θ in Θ]...)')
+    return dΘ 
 end
 
-function generalized_coupled_updateΘ_I(Θ, p, t)
+function generalized_coupled_updateΘ_I(dΘ, Θ, p, t)
     N, κ, IΘ, ωI, ξθI = p
     Θ = mod.(Θ, 2π) # θ ∈[0, 2π]
     inp = [IΘ[i](Θ...) for i in 1:N]
     ωΘ = [κ[i] * ωI(inp[i]) for i in 1:N]
-    XiΘ = LinearAlgebra.I　- hcat([ξθI(Θ[i], inp[i]) * Interpolations.gradient(IΘ[i], Θ...) for i in 1:N]...)'
-    dΘ = XiΘ \ ωΘ # generalized phase equation
+    XiΘ = I(N)　- hcat([ξθI(Θ[i], inp[i]) * Interpolations.gradient(IΘ[i], Θ...) for i in 1:N]...)'
+    dΘ[:] = XiΘ \ ωΘ # generalized phase equation
     return dΘ
 end
 
-function generalized_coupled_updateΘ_PQ(Θ, p, t)
+function generalized_coupled_updateΘ_PQ(dΘ, Θ, p, t)
     N, D, κ, G, QΘ, ωI, ζθI, ξθI, XsI = p
     Θ = mod.(Θ, 2π) # θ ∈[0, 2π]
     q̂ = [QΘ[i](Θ...) for i in 1:N]
     p̂ = G(hcat([[XsI[j](Θ[i], q̂[i]) for j in 1:D] for i in 1:N]...)') - q̂
     ϕ = [κ[i] * ωI(q̂[i]) + ζθI(Θ[i], q̂[i])*p̂[i] for i in 1:N]
-    XiΘ = LinearAlgebra.I - hcat([ξθI(Θ[i], q̂[i]) * Interpolations.gradient(QΘ[i], Θ...) for i in 1:N]...)'
-    dΘ = XiΘ \ ϕ # generalized phase equation
+    XiΘ = I(N) - hcat([ξθI(Θ[i], q̂[i]) * Interpolations.gradient(QΘ[i], Θ...) for i in 1:N]...)'
+    dΘ[:] = XiΘ \ ϕ # generalized phase equation
     return dΘ
 end
 
