@@ -33,6 +33,6 @@ ForwardDiff.jl, LinearAlgebra.jl, Random.jl, Statistics.jl, ProgressMeter.jl, In
 
 
 ## Reference
-- W. Kurebayashi, T. Yamamoto, S. Shirasaka, and H. Nakao. "Phase Reduction of Limit-Cycle Oscillators with Largely Varying Coupling." *in prep*.
-- W. Kurebayashi, S. Shirasaka, and H. Nakao. "Phase reduction method for strongly perturbed limit cycle oscillators." Physical review letters 111.21 (2013): 214101.
+- Kurebayashi, W., Yamamoto, T., Shirasaka, S., & Nakao, H. (2022). Phase reduction of strongly coupled limit-cycle oscillators. Physical Review Research, 4(4), 043176. <https://doi.org/10.1103/PhysRevResearch.4.043176>
+- Kurebayashi, W., Shirasaka, S., & Nakao, H. (2013). Phase reduction method for strongly perturbed limit cycle oscillators. Physical Review Letters, 111(21), 214101. <https://doi.org/10.1103/PhysRevLett.111.214101>
 
